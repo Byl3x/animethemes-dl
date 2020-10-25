@@ -2,11 +2,11 @@
   <h1>animethemes-dl</h1>
   Download anime themes with myanimelist.
   
-  ![GitHub](https://img.shields.io/github/license/thesadru/animethemes-dl)
-  ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/thesadru/animethemes-dl)
-  ![GitHub last commit](https://img.shields.io/github/last-commit/thesadru/animethemes-dl)
-  ![GitHub Release](https://img.shields.io/github/v/release/thesadru/animethemes-dl?include_prereleases)
-  [![Run on Repl.it](https://repl.it/badge/github/thesadru/animethemes-dl)](https://repl.it/github/thesadru/animethemes-dl)
+  ![GitHub](https://img.shields.io/github/license/Byl3x/animethemes-dl)
+  ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Byl3x/animethemes-dl)
+  ![GitHub last commit](https://img.shields.io/github/last-commit/Byl3x/animethemes-dl)
+  ![GitHub Release](https://img.shields.io/github/v/release/Byl3x/animethemes-dl?include_prereleases)
+  [![Run on Repl.it](https://repl.it/badge/github/Byl3x/animethemes-dl)](https://repl.it/github/Byl3x/animethemes-dl)
 </div>
 
 # what's this project
@@ -16,18 +16,18 @@ All videos are downloaded from [animethemes.moe](https://themes.moe/) and origin
 Note that owning and distributing the program itself is allowed.
 # how to install
 - clone this repository or download it
-- do `pip install -r requirements.txt` to install all required libraries
-- install ffmpeg into the same folder or in PATH
+- do `pip install .`
+- add install directory to path(or run as root)
+- run `animethemes-dl`
 # usage
 - make sure you have ffmpeg and python installed
-- run `python main.py -h` for help
-- run `python main.py <username> <settings>` to download your songs
-## guide
-you may need to use `python main.py` instead of `animethemes-dl`
+- run `animethemes-dl -h`
+- run `animethemes-dl <username> <settings>` to download your songs
 
 The most barebones download requires a username and a save folder.
 Username refferes to your MAL username, alternatively if you want to use AniList, you need to use `--anilist`.
 Save folders can be set by `-a` (audio) and `-v` (video).
+examples:  
 ```
 animethemes-dl sadru -a "themes"
 animethemes-dl sadru --anilist -v "anime oped"
@@ -179,7 +179,6 @@ This code grabs your animelist data, filters it based off your settings, puts it
 # TODO
 - code optimizations
 - add track, artist and description metadata
-- create setup.py
 - add to pypi
 - add progress to download
 - add an option to delete files that would have been filtered out
