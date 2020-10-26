@@ -257,7 +257,7 @@ def download_theme(theme_data,webm_folder=None,mp3_folder=None,no_redownload=Fal
     return {"mp3":mp3dest,"webm":webm_dest}
 
 _LAST_DOWNLOAD_TIME = 10.0
-def download_theme_audio_server(theme_data,mp3_folder=None,no_redownload=False,data_size=65536,timeout=30):
+def download_theme_audio_server(theme_data,mp3_folder=None,no_redownload=False,data_size=65536,timeout=10):
     """
     downloads an audio file from from a server
     the progress bar is completely fake
@@ -276,15 +276,16 @@ def download_theme_audio_server(theme_data,mp3_folder=None,no_redownload=False,d
         last_increment = last_decrement = time.time()
         expected_remain = _LAST_DOWNLOAD_TIME+0.75
         current_time = lambda: time.time() - START_TIME
-        def download_string(x,y,r=2):
+        def download_time(x,y,r=2):
             x = str(x).split('.')
             y = str(y).split('.')
             x = x[0]+'.'+x[1][:r]
             y = y[0]+'.'+y[1][:r]
-            return f'[*] {x}s / {y}s  '
+            fprint("download",x+"s / "+y+"s", end="\r")
+            return
 
         while True:
-            fprint(download_string(current_time(),expected_remain),end='\r')
+            download_time(current_time(),expected_remain)
             
             # time updater
             difference = expected_remain-current_time()
@@ -358,6 +359,7 @@ def download_theme_audio_server(theme_data,mp3_folder=None,no_redownload=False,d
             break
         else:
             fprint('error','all mirrors are invalid (press CTRL+C to stop program)')
+            quit()
             return None
         
         add_metadata(filename,theme_data["metadata"],Opts.Download.coverart)

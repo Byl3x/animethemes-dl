@@ -4,8 +4,6 @@ allows the use of quiet and no-color
 """
 import sys
 from globals import Opts
-from colorama import init,Style,Fore
-init()
 
 
 def color_category(category):
@@ -16,14 +14,16 @@ def color_category(category):
         return '['+category+']'
     
     color = {
-        'progress':Fore.GREEN,
-        'get':Fore.YELLOW,
-        'download':Fore.CYAN,
-        'convert':Fore.CYAN,
-        'parse':Fore.LIGHTYELLOW_EX,
-        'error':Fore.RED
-    }[category]
-    return '['+color+category+Style.RESET_ALL+']'
+        'progress':'\033[32m',
+        'get':'\033[1;33m',
+        'download':'\033[1;36m',
+        'convert':'\033[36m',
+        'parse':'\033[34m',
+        'error':'\033[1;31m'
+    }
+    endcolor='\033[m'
+
+    return '['+color[category]+category+endcolor+']'
 
 def fprint(category,message='',start='',end='\n'):
     """

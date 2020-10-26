@@ -11,7 +11,7 @@ setuptools.setup(
         description="Downloads anime themes from theme.moe using an animethemes-api. Supports Batch download and MAL connecting.",
         python_requires=">=3.6",
         license="MIT",
-        install_requires=["pySmartDl", "eyed3", "requests", "colorama"],
+        install_requires=["pySmartDl", "eyed3", "requests"],
         scripts=['animethemes-dl'],
         py_modules=["printer", "downloader", "globals", "animethemes"],
         )
